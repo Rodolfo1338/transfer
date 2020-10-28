@@ -1,0 +1,98 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #ffffff;
+}
+
+.cont-bienvenido{
+    margin-top: 12%;    
+}
+
+.msg-bienvenido{
+    font-size: 80px;
+}
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+}
+
+.btn-entrar{
+    background: #0b6087;
+    color: #ffffff;
+}
+
+.btn-registrar{
+    background: #f15944;
+    color: #ffffff;
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #243853;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 20%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 30%; 
+    }
+
+    .sidenav{
+        width: 25%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 5%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 15%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
