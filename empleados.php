@@ -58,7 +58,7 @@
 
                     
 
-                    <p> <i class="fas fa-user"></i> Noé Sánchez</p>
+                    <p> <i class="fas fa-user"></i> Ricardo Alarcón</p>
 
 
 
@@ -84,7 +84,7 @@
 
                             <li>
 
-                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Docentes</a>
+                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Empleados</a>
 
                             </li>
 
@@ -100,33 +100,7 @@
 
                     
 
-                    <li>
-
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Paginas</a>
-
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-
-                            <li>
-
-                                <a href="#">Pagina 1</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="#">Pagina 2</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="#">Pagina 3</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
+                    
 
                 </ul>
 
@@ -204,11 +178,7 @@
 
                                 </li>
 
-                                <li class="nav-item">
-
-                                    <a class="nav-link" href="#"> <i class="fas fa-cogs"></i> Configuración</a>
-
-                                </li>
+                                
 
                             </ul>
 
@@ -260,8 +230,8 @@
                                 
                                 <td>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.vchmatricula,dato.vchnombre,dato.vchapp,dato.vchapm,dato.chrcuatrimestre,dato.chrgrupo,dato.vchcurp,dato.vchdireccion,dato.vchtelefono,dato.vchemail,dato.vchusuario,dato.vchpassword,dato.vchcarrera)"><i class="fas fa-pencil-alt"></i></button>    
-                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.vchmatricula)"><i class="fas fa-trash-alt"></i></button>      
+                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.intidempleado,dato.vchnombre,dato.vchapp,dato.vchapm,dato.vchrfc,dato.vchdireccion,dato.vchpuesto,dato.vchusuario,dato.vchpassword)"><i class="fas fa-pencil-alt"></i></button>    
+                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidempleado,dato.vchnombre)"><i class="fas fa-trash-alt"></i></button>      
                                 </div>
                                 </td>
                             </tr>   

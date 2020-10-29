@@ -6,40 +6,32 @@ var Idempleados = new Vue({
 el: "#Idempleados",   
 data:{     
      datos:[],          
-     matricula:"",
+     clave:"",
      nombre:"",
      apaterno:"",
      amaterno:"",
-     carrera:"",
-     cuatrimestre:"",
-     grupo:"",
-     curp:"",
+     rfc:"",
      direccion:"",
-     telefono:"",
-     email:"",
+     puesto:"",
      usuario:"",
      password:"",
+     
            
  },    
 methods:{  
     //BOTONES        
     btnAlta:async function(){                    
         const {value: formValues} = await Swal.fire({
-        title: 'Agregar Alumno',
+        title: 'Agregar Empleado',
         html:
-        '<div class="row"><label class="col-sm-3 col-form-label">Matricula</label><div class="col-sm-7"><input id="matricula" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="nombre" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="apaterno" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="amaterno" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Carrera</label><div class="col-sm-7"><input id="carrera" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Cuatrimestre</label><div class="col-sm-7"><input id="cuatrimestre" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Grupo</label><div class="col-sm-7"><input id="grupo" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Curp</label><div class="col-sm-7"><input id="curp" type="text" class="form-control"></div></div>'+
+        '<div class="row"><label class="col-sm-3 col-form-label">RFC</label><div class="col-sm-7"><input id="rfc" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Direccion</label><div class="col-sm-7"><input id="direccion" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Telefono</label><div class="col-sm-7"><input id="telefono" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">E-mail</label><div class="col-sm-7"><input id="email" type="text" class="form-control"></div></div>'+
+        '<div class="row"><label class="col-sm-3 col-form-label">Puesto</label><div class="col-sm-7"><input id="puesto" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="usuario" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" type="text" class="form-control"></div></div>',              
+        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" type="text" class="form-control"></div></div>',
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: 'Guardar',          
@@ -47,32 +39,32 @@ methods:{
         cancelButtonColor:'#3085d6',  
         preConfirm: () => {            
             return [
-             this.matricula = document.getElementById('matricula').value,
              this.nombre = document.getElementById('nombre').value,
              this.apaterno = document.getElementById('apaterno').value,
              this.amaterno = document.getElementById('amaterno').value, 
-             this.carrera = document.getElementById('carrera').value, 
-             this.cuatrimestre = document.getElementById('cuatrimestre').value,
-             this.grupo = document.getElementById('grupo').value,  
-             this.curp = document.getElementById('curp').value,  
-             this.direccion = document.getElementById('direccion').value, 
-             this.telefono = document.getElementById('telefono').value,
-             this.email = document.getElementById('email').value, 
+             this.rfc = document.getElementById('rfc').value, 
+             this.direccion = document.getElementById('direccion').value,
+             this.puesto = document.getElementById('puesto').value,  
              this.usuario = document.getElementById('usuario').value,  
-             this.password = document.getElementById('password').value        
+             this.password = document.getElementById('password').value       
             ]
           }
         })        
-        if(this.matricula == "" || this.nombre == "" || this.apaterno == "" || this.amaterno=="" || this.carrera==""
-          || this.cuatrimestre=="" || this.grupo=="" || this.curp=="" || this.direccion=="" || this.telefono==""
-          || this.email=="" || this.usuario=="" || this.password==""){
+        if(this.nombre == "" 
+          || this.apaterno==""
+          || this.amaterno=="" 
+          || this.rfc=="" 
+          || this.direccion=="" 
+          || this.puesto==""
+          || this.usuario=="" 
+          || this.password==""){
                 Swal.fire({
                   type: 'info',
                   title: 'Datos incompletos',                                    
                 }) 
         }       
         else{          
-          this.altaAlumno();          
+          this.altaEmpleado();          
           const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -81,59 +73,52 @@ methods:{
             });
             Toast.fire({
               type: 'success',
-              title: '¡Alumno Agregado!'
+              title: '¡Empleado Agregado!'
             }) 
-            this.listarAlumnos();               
+            this.listarEmpleados();               
         }
     },           
-    btnEditar:async function(matricula,nombre,apaterno,amaterno,cuatrimestre,grupo,curp,direccion,telefono,email,usuario,password,carrera){                            
+    btnEditar:async function(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password){                            
         await Swal.fire({
-        title: 'EDITAR',
+        title: 'Editar Empleado',
         html:
-        '<div class="row"><label class="col-sm-3 col-form-label">Matricula</label><div class="col-sm-7"><input id="matricula" value="'+matricula+'" type="text" disabled class="form-control"></div></div>'+
+        '<div class="row"><label class="col-sm-3 col-form-label">Clave</label><div class="col-sm-7"><input id="clave" value="'+clave+'" type="text" disabled class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="nombre" value="'+nombre+'" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="apaterno" value="'+apaterno+'" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="amaterno" value="'+amaterno+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Carrera</label><div class="col-sm-7"><input id="carrera" value="'+carrera+'" type="text" disabled class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Cuatrimestre</label><div class="col-sm-7"><input id="cuatrimestre" value="'+cuatrimestre+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Grupo</label><div class="col-sm-7"><input id="grupo" value="'+grupo+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Curp</label><div class="col-sm-7"><input id="curp" value="'+curp+'" type="text" class="form-control"></div></div>'+
+        '<div class="row"><label class="col-sm-3 col-form-label">RFC</label><div class="col-sm-7"><input id="rfc" value="'+rfc+'" type="text"  class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Direccion</label><div class="col-sm-7"><input id="direccion" value="'+direccion+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Telefono</label><div class="col-sm-7"><input id="telefono" value="'+telefono+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">E-mail</label><div class="col-sm-7"><input id="email" value="'+email+'" type="text" class="form-control"></div></div>'+
+        '<div class="row"><label class="col-sm-3 col-form-label">Puesto</label><div class="col-sm-7"><input id="puesto" value="'+puesto+'" type="text" class="form-control"></div></div>'+
         '<div class="row"><label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="usuario" value="'+usuario+'" type="text" disabled class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" value="'+password+'" type="text" class="form-control"></div></div>',  
+        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" value="'+password+'" type="text" class="form-control"></div></div>',
         focusConfirm: false,
         showCancelButton: true,                         
         }).then((result) => {
           if (result.value) {                                             
-            matricula = document.getElementById('matricula').value,    
+            clave = document.getElementById('clave').value,    
             nombre = document.getElementById('nombre').value,
             apaterno = document.getElementById('apaterno').value,
             amaterno = document.getElementById('amaterno').value,
-            cuatrimestre = document.getElementById('cuatrimestre').value, 
-            grupo = document.getElementById('grupo').value, 
-            curp = document.getElementById('curp').value,
+            rfc = document.getElementById('rfc').value, 
             direccion = document.getElementById('direccion').value, 
-            telefono = document.getElementById('telefono').value, 
-            email = document.getElementById('email').value,
+            puesto = document.getElementById('puesto').value,
             usuario = document.getElementById('usuario').value, 
-            password = document.getElementById('password').value,  
-            carrera = document.getElementById('carrera').value,                                  
+            password = document.getElementById('password').value, 
+                                             
             
-            this.editarAlumno(matricula,nombre,apaterno,amaterno,cuatrimestre,grupo,curp,direccion,telefono,email,usuario,password,carrera);
+            this.editarEmpleado(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password);
             Swal.fire(
               '¡Actualizado!',
-              'El alumno ha sido actualizado.',
+              'El empleado ha sido actualizado.',
               'success'
             )                  
           }
         });
         
     },        
-    btnBorrar:function(matricula){        
+    btnBorrar:function(clave,nombre){        
         Swal.fire({
-          title: '¿Está seguro de borrar al Alumno: '+matricula+" ?",         
+          title: '¿Está seguro de borrar al Empleado: '+nombre+" ?",         
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor:'#d33',
@@ -141,11 +126,11 @@ methods:{
           confirmButtonText: 'Borrar'
         }).then((result) => {
           if (result.value) {            
-            this.borrarAlumno(matricula);             
+            this.borrarEmpleado(clave);             
             //y mostramos un msj sobre la eliminación  
             Swal.fire(
               '¡Eliminado!',
-              'El alumno ha sido borrado.',
+              'El empleado ha sido borrado.',
               'success'
             )
           }
@@ -159,30 +144,37 @@ methods:{
         });
     },    
     //Procedimiento CREAR.
-    altaAlumno:function(){
-        axios.post(url, {opcion:1, matricula:this.matricula, nombre:this.nombre,apaterno:this.apaterno,
-        amaterno:this.amaterno,carrera:this.carrera,cuatrimestre:this.cuatrimestre,grupo:this.grupo,
-        curp:this.curp,direccion:this.direccion,telefono:this.telefono,email:this.email,usuario:this.usuario,
-        password:this.password }).then(response =>{
-            this.listarAlumnos();
+    altaEmpleado:function(){
+        axios.post(url, {opcion:1, nombre:this.nombre,apaterno:this.apaterno,amaterno:this.amaterno,
+          rfc:this.rfc,direccion:this.direccion,puesto:this.puesto,usuario:this.usuario,password:this.password
+        }).then(response =>{
+            this.listarEmpleados();
         });        
-         this.matricula = "", this.nombre = "", this.apaterno = "",this.amaterno = "",this.carrera = "",this.cuatrimestre = "",
-         this.grupo = "",this.curp = "",this.direccion = "",this.telefono = "",this.email = "",this.usuario = "",this.password = ""
-         
+         this.nombre="", this.apaterno="", this.amaterno="",this.rfc="", this.direccion="",this.puesto="",this.usuario="",
+         this.password=""
     },               
     //Procedimiento EDITAR.
-    editarAlumno:function(matricula,nombre,apaterno,amaterno,cuatrimestre,grupo,curp,direccion,telefono,email,usuario,password,carrera){       
-       axios.post(url, {opcion:2, matricula:matricula, nombre:nombre, apaterno:apaterno, amaterno:amaterno,cuatrimestre:cuatrimestre,
-       grupo:grupo, curp:curp,direccion:direccion,telefono:telefono,email:email,usuario:usuario,password:password,
-       carrera:carrera })
+    editarEmpleado:function(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password){       
+       axios.post(url, {
+        opcion:2, 
+        clave:clave,
+        nombre:nombre,
+        apaterno:apaterno,
+        amaterno:amaterno,
+        rfc:rfc,
+        direccion:direccion,
+        puesto:puesto,
+        usuario:usuario,
+        password:password
+      })
        .then(response =>{           
-           this.listarAlumnos();           
+           this.listarEmpleados();           
         });                              
     },    
     //Procedimiento BORRAR.
-    borrarAlumno:function(matricula){
-        axios.post(url, {opcion:3, matricula:matricula}).then(response =>{           
-            this.listarAlumnos();
+    borrarEmpleado:function(clave){
+        axios.post(url, {opcion:3, clave:clave}).then(response =>{           
+            this.listarEmpleados();
             });
     }             
 },      
