@@ -14,7 +14,7 @@
 
 
 
-        <title>UTHH-Transfer</title>
+        <title>Conceptos</title>
 
 
 
@@ -64,7 +64,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="inicio.php"> <i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href="index.html"> <i class="fas fa-home"></i> Home</a>
 
                     </li>
 
@@ -151,7 +151,7 @@
 
                         <div class="col titulo_pagina">
 
-                            <h3 align="center">UTHH-Transfer</h3>
+                            Conceptos
 
                         </div>
 
@@ -193,41 +193,49 @@
 
                 </nav>
 
-                <div class="contenedor-carrusel">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img class="d-block w-100" src="https://www.theeconomyjournal.com/images/showid2/1030637?w=981&zc=5&r=7:4&zc=5&r=59:29" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                            <img class="d-block w-100" src="https://tech.blogstar.hu/pages/tech/contents/blog/67279/pics/lead_800x600.jpg" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
-                            <img class="d-block w-100" src="https://positivevoice.gr/wp-content/uploads/2018/12/data-regulation-rules-ss-1920_pyoujo.jpg" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                            <img class="d-block w-100" src="https://www.addislaw.co.uk/wp-content/uploads/2018/10/Data-Protection.jpg" alt="Third slide">
-                          </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
+                <div id="Idconceptos">               
+                    <div class="container">                
+                        <div class="row">       
+                            <div class="col">        
+                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Conceptos</i></button>
+                            </div>
+                   
+                        </div> 
+
+                        <div class="row mt-5">
+                <div class="col-lg-12">                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="bg-primary text-light">
+                                <th>Clave</th>                                    
+                                <th>Concepto</th>
+                                <th>Costo</th>
+                                <th>Acciones</th>
+
+                            </tr>    
+                        </thead>
+                        <tbody>
+                            <tr v-for="(dato,indice) of datos">                                
+                                <td>{{dato.intidconcepto}}</td>                                
+                                <td>{{dato.vchconcepto}}</td>
+                                <td>{{dato.intcosto}}</td>
+                                
+                                
+                                
+                                <td>
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.intidconcepto,dato.vchconcepto,dato.intcosto)"><i class="fas fa-pencil-alt"></i></button>    
+                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidconcepto,dato.vchconcepto)"><i class="fas fa-trash-alt"></i></button>      
+                                </div>
+                                </td>
+                            </tr>   
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>  
+
                     </div>
                 </div>
-
-                
-                
 
         </div>
 
@@ -244,7 +252,7 @@
     <!--Sweet Alert 2 -->        
     <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
     <!--Código custom -->          
-    <script src="js/main.js"></script> 
+    <script src="js/conceptos.main.js"></script> 
 
   
 

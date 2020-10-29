@@ -14,7 +14,7 @@
 
 
 
-        <title>ALUMNOS</title>
+        <title>Conceptos</title>
 
 
 
@@ -58,7 +58,7 @@
 
                     
 
-                    <p> <i class="fas fa-user"></i> Noé Sánchez</p>
+                    <p> <i class="fas fa-user"></i> Ricardo Alarcón</p>
 
 
 
@@ -84,13 +84,18 @@
 
                             <li>
 
-                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Docentes</a>
+                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Empleados</a>
 
                             </li>
 
                             <li>
 
                                 <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
+
+                            </li>
+                            <li>
+
+                                <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
 
                             </li>
 
@@ -100,33 +105,7 @@
 
                     
 
-                    <li>
-
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Paginas</a>
-
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-
-                            <li>
-
-                                <a href="#">Pagina 1</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="#">Pagina 2</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="#">Pagina 3</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
+                    
 
                 </ul>
 

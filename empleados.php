@@ -93,6 +93,11 @@
                                 <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
 
                             </li>
+                            <li>
+
+                                <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
+
+                            </li>
 
                         </ul>
 
