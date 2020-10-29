@@ -90,7 +90,7 @@
 
                             <li>
 
-                                <a href="cuentas.html"> <i class="fas fa-address-book"></i> Cuentas</a>
+                                <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
 
                             </li>
 

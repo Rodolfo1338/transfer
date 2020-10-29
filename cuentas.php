@@ -14,7 +14,7 @@
 
 
 
-        <title>Empleados</title>
+        <title>Cuentas</title>
 
 
 
@@ -64,7 +64,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="index.html"> <i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href="inicio.php"> <i class="fas fa-home"></i> Home</a>
 
                     </li>
 
@@ -90,7 +90,7 @@
 
                             <li>
 
-                                <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
+                                <a href="cuentas.html"> <i class="fas fa-address-book"></i> Cuentas</a>
 
                             </li>
 
@@ -146,7 +146,11 @@
 
                         <div class="col titulo_pagina">
 
-                            Empleados
+                            <h3>
+                                 Gestión de Cuentas
+
+                            </h3>
+                           
 
                         </div>
 
@@ -188,11 +192,13 @@
 
                 </nav>
 
-                <div id="Idempleados">               
+                <!--Logica CRUD-->
+
+                <div id="Idcuentas">               
                     <div class="container">                
                         <div class="row">       
                             <div class="col">        
-                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Empleado</i></button>
+                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Crear Cuenta</button>
                             </div>
                    
                         </div> 
@@ -202,37 +208,44 @@
                     <table class="table table-striped">
                         <thead>
                             <tr class="bg-primary text-light">
-                                <th>Clave</th>                                    
+                                <th>N° Cuenta</th>                                    
                                 <th></th>
                                 <th>Nombre</th>
                                 <th></th> 
-                                <th>Rfc</th>   
-                                <th>Puesto</th>
-                                <th>Direccion</th>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
+                                <th>Carrera</th>   
+                                <th>Vencimiento</th>
+                                <th>Codigo Seguridad</th>
+                                <th>Saldo</th>
                                 <th>Acciones</th>
+                                <th></th>
 
                             </tr>    
                         </thead>
                         <tbody>
                             <tr v-for="(dato,indice) of datos">                                
-                                <td>{{dato.intidempleado}}</td>                                
+                                <td>{{dato.vchidcuenta}}</td>                                
                                 <td>{{dato.vchnombre}}</td>
                                 <td>{{dato.vchapp}}</td>
                                 <td>{{dato.vchapm}}</td>
-                                <td>{{dato.vchrfc}}</td>
-                                <td>{{dato.vchdireccion}}</td>
-                                <td>{{dato.vchpuesto}}</td>
-                                <td>{{dato.vchusuario}}</td>
-                                <td>{{dato.vchpassword}}</td>
+                                <td>{{dato.vchcarrera}}</td>
+                                <td>{{dato.vchfechavencimiento}}</td>
+                                <td>{{dato.vchcodigoseguridad}}</td>
+                                <td>{{dato.fltsaldo}}</td>
+                                
                                 
                                 
                                 <td>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.intidempleado,dato.vchnombre,dato.vchapp,dato.vchapm,dato.vchrfc,dato.vchdireccion,dato.vchpuesto,dato.vchusuario,dato.vchpassword)"><i class="fas fa-pencil-alt"></i></button>    
-                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidempleado,dato.vchnombre)"><i class="fas fa-trash-alt"></i></button>      
+                                    <button class="btn btn-secondary" title="Depositar" @click="btnDepositar(dato.vchidcuenta,dato.fltsaldo)"><i class="fas fa-pencil-alt"></i>Depositar</button>  <br>  
+                                      
                                 </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        
+                                        <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.vchidcuenta)"><i class="fas fa-trash-alt"></i></button>      
+                                    </div>
+
                                 </td>
                             </tr>   
                         </tbody>
@@ -258,7 +271,7 @@
     <!--Sweet Alert 2 -->        
     <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
     <!--Código custom -->          
-    <script src="js/empleados.main.js"></script> 
+    <script src="js/cuentas.main.js"></script> 
 
   
 
