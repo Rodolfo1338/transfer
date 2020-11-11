@@ -98,6 +98,16 @@
                                 <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
 
                             </li>
+                            <li>
+
+                                <a href="carreras.php"> <i class="fas fa-address-book"></i> Carreras</a>
+
+                            </li>
+                            <li>
+
+                                <a href="conceptospendientes.php"> <i class="fas fa-address-book"></i> Conceptos Pendientes</a>
+
+                            </li>
 
                         </ul>
 
@@ -243,8 +253,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>    
     <!--Sweet Alert 2 -->        
     <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
-    <!--Código custom -->          
-    <script src="js/main.js"></script> 
+    
 
   
 

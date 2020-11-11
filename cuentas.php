@@ -98,6 +98,16 @@
                                 <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
 
                             </li>
+                            <li>
+
+                                <a href="carreras.php"> <i class="fas fa-address-book"></i> Carreras</a>
+
+                            </li>
+                            <li>
+
+                                <a href="conceptospendientes.php"> <i class="fas fa-address-book"></i> Conceptos Pendientes</a>
+
+                            </li>
 
                         </ul>
 

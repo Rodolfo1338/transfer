@@ -14,7 +14,7 @@
 
 
 
-        <title>Empleados</title>
+        <title>Carreras</title>
 
 
 
@@ -161,7 +161,7 @@
 
                         <div class="col titulo_pagina">
 
-                            Empleados
+                            Carreras
 
                         </div>
 
@@ -203,11 +203,11 @@
 
                 </nav>
 
-                <div id="Idempleados">               
+                <div id="Idcarreras">               
                     <div class="container">                
                         <div class="row">       
                             <div class="col">        
-                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Empleado</i></button>
+                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Carreras</i></button>
                             </div>
                    
                         </div> 
@@ -218,35 +218,24 @@
                         <thead>
                             <tr class="bg-primary text-light">
                                 <th>Clave</th>                                    
-                                <th></th>
-                                <th>Nombre</th>
-                                <th></th> 
-                                <th>Rfc</th>   
-                                <th>Puesto</th>
-                                <th>Direccion</th>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
-                                <th>Acciones</th>
+                                <th>Carrera</th>
+                                <th>Opciones</th>
+                                
 
                             </tr>    
                         </thead>
                         <tbody>
                             <tr v-for="(dato,indice) of datos">                                
-                                <td>{{dato.intidempleado}}</td>                                
-                                <td>{{dato.vchnombre}}</td>
-                                <td>{{dato.vchapp}}</td>
-                                <td>{{dato.vchapm}}</td>
-                                <td>{{dato.vchrfc}}</td>
-                                <td>{{dato.vchdireccion}}</td>
-                                <td>{{dato.vchpuesto}}</td>
-                                <td>{{dato.vchusuario}}</td>
-                                <td>{{dato.vchpassword}}</td>
+                                <td>{{dato.intidcarrera}}</td>                                
+                                <td>{{dato.vchcarrera}}</td>
+                               
+                                
                                 
                                 
                                 <td>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.intidempleado,dato.vchnombre,dato.vchapp,dato.vchapm,dato.vchrfc,dato.vchdireccion,dato.vchpuesto,dato.vchusuario,dato.vchpassword)"><i class="fas fa-pencil-alt"></i></button>    
-                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidempleado,dato.vchnombre)"><i class="fas fa-trash-alt"></i></button>      
+                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.intidcarrera,dato.vchcarrera)"><i class="fas fa-pencil-alt"></i></button>    
+                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidcarrera,dato.vchcarrera)"><i class="fas fa-trash-alt"></i></button>      
                                 </div>
                                 </td>
                             </tr>   
@@ -273,7 +262,7 @@
     <!--Sweet Alert 2 -->        
     <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
     <!--Código custom -->          
-    <script src="js/empleados.main.js"></script> 
+    <script src="js/carreras.main.js"></script> 
 
   
 

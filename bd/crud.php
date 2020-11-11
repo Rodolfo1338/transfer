@@ -22,7 +22,8 @@ $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 switch($opcion){
     case 1:
         $consulta1="INSERT INTO tblusuario(vchusuario,vchpassword,intidrol) VALUES('$usuario','$password',1);";
-        $consulta2 = "INSERT INTO tblalumnos VALUES('$matricula','$nombre','$apaterno','$amaterno','$cuatrimestre','$grupo','$curp','$direccion','$telefono','$email',(SELECT intidusuario FROM tblusuario WHERE vchusuario='$usuario'),$carrera);";	
+        $consulta2 = "INSERT INTO tblalumnos VALUES('$matricula','$nombre','$apaterno','$amaterno','$cuatrimestre','$grupo','$curp','$direccion','$telefono','$email',(SELECT intidusuario FROM tblusuario WHERE vchusuario='$usuario'),$carrera);";
+
         $resultado1 = $conexion->prepare($consulta1);
         $resultado1->execute();
         $resultado2= $conexion->prepare($consulta2);
@@ -32,16 +33,19 @@ switch($opcion){
         $consulta1 = "UPDATE tblusuario SET vchpassword='$password',intidrol=1 WHERE vchusuario='$usuario';";		
         $resultado1 = $conexion->prepare($consulta1);
         $resultado1->execute(); 
-        $consulta2="UPDATE tblalumnos SET vchnombre='$nombre',vchapp='$apaterno',vchapm='$amaterno',chrcuatrimestre='$cuatrimestre',chrgrupo='$grupo',vchcurp='$curp',vchdireccion='$direccion',vchtelefono='$telefono',vchemail='$email',intidusuario=(SELECT intidusuario FROM tblusuario WHERE vchusuario='$usuario'),intidcarrera=2 WHERE vchmatricula='$matricula';";
+        $consulta2="UPDATE tblalumnos SET vchnombre='$nombre',vchapp='$apaterno',vchapm='$amaterno',chrcuatrimestre='$cuatrimestre',chrgrupo='$grupo',vchcurp='$curp',vchdireccion='$direccion',vchtelefono='$telefono',vchemail='$email',intidusuario=(SELECT intidusuario FROM tblusuario WHERE vchusuario='$usuario'),intidcarrera=$carrera WHERE vchmatricula='$matricula';";
         $resultado2 = $conexion->prepare($consulta2);
         $resultado2->execute(); 
 
         $data=$resultado2->fetchAll(PDO::FETCH_ASSOC);
         break;        
     case 3:
-        $consulta = "DELETE FROM tblalumnos WHERE vchmatricula='$matricula' ";		
+        $consulta = "DELETE FROM tblalumnos WHERE vchmatricula='$matricula' ";	
+        $consulta2="DELETE FROM tblusuario WHERE vchusuario='$usuario';";	
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute();                           
+        $resultado2=$conexion->prepare($consulta2);
+        $resultado->execute();
+        $resultado2->execute();                           
         break;         
     case 4:
         $consulta = "SELECT * FROM tblalumnos a LEFT JOIN tblusuario b ON a.`intidusuario`=b.`intidusuario`LEFT JOIN tblcarreras c ON a.`intidcarrera`=c.`intidcarrera`";
@@ -49,6 +53,20 @@ switch($opcion){
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+    case 5:
+        $consulta = "SELECT * FROM tblcarreras;";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 6:
+    // traer datos para el combo segun dato elegido
+        $consulta = "SELECT * FROM tblcarreras ORDER BY  vchcarrera='$carrera' DESC";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+
 }
 
 

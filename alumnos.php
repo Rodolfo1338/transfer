@@ -4,296 +4,405 @@
 
 
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
+    <meta charset="utf-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
 
-        <title>Conceptos</title>
+    <title>Alumnos</title>
 
 
 
-        <!-- Bootstrap CSS CDN -->
+    <!-- Bootstrap CSS CDN -->
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-        <!-- Our Custom CSS -->
+    <!-- Our Custom CSS -->
 
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 
 
-        <!-- Font Awesome JS -->
+    <!-- Font Awesome JS -->
 
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-    </head>
+</head>
 
 
 
-    <body>
+<body>
 
-         <div class="wrapper">
+   <div class="wrapper">
 
-            <!-- Sidebar  -->
+    <!-- Sidebar  -->
 
-            <nav id="sidebar">
+    <nav id="sidebar">
 
-                <div class="sidebar-header">
+        <div class="sidebar-header">
 
-                    <h3>UTHH TRANSFER</h3>
-
-                </div>
-
-
-
-                <ul class="list-unstyled components">
-
-                    
-
-                    <p> <i class="fas fa-user"></i> Ricardo Alarcón</p>
-
-
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="index.html"> <i class="fas fa-home"></i> Home</a>
-
-                    </li>
-
-
-
-                    <li>
-
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Administrar</a>
-
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-
-                            <li class="active">
-
-                                <a href="alumnos.php"> <i class="fas fa-user-graduate"></i> </i> Alumnos</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Empleados</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
-
-                            </li>
-                            <li>
-
-                                <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    
-
-                    
-
-                </ul>
-
-
-
-                <ul class="list-unstyled CTAs">
-
-                    <li>
-
-                        <a href="#">Contactanos</a>
-
-                    </li>
-
-                    <li>
-
-                        <a href="about.html">Acerca de nosotros</a>
-
-                    </li>
-
-                </ul>
-
-            </nav>
-
-
-
-            <!-- Contenido de la pagina  -->
-
-            <div id="content">
-
-                <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-
-                    <div class="container-fluid">
-
-
-
-                        <button type="button" id="sidebarCollapse" class="btn btn-menu">
-
-                            <i class="fas fa-align-left"></i>
-
-                            <span>Menú</span>
-
-                        </button>
-
-                        <div class="col titulo_pagina">
-
-                            Alumnos
-
-                        </div>
-
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
-                            <i class="fas fa-align-justify"></i>
-
-                        </button>
-
-
-
-                        
-
-
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                            <ul class="nav navbar-nav ml-auto">
-
-                                <li class="nav-item">
-
-                                    <a class="nav-link" href="#"> <i class="fas fa-user"></i> Perfil</a>
-
-                                </li>
-
-                                <li class="nav-item">
-
-                                    <a class="nav-link" href="#"> <i class="fas fa-times-circle"></i> Cerrar sesión</a>
-
-                                </li>
-
-                                <li class="nav-item">
-
-                                    <a class="nav-link" href="#"> <i class="fas fa-cogs"></i> Configuración</a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </nav>
-
-                <div id="Idalumnos">               
-                    <div class="container">                
-                        <div class="row">       
-                            <div class="col">        
-                                <button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Alumno</i></button>
-                            </div>
-                   
-                        </div> 
-
-                        <div class="row mt-5">
-                <div class="col-lg-12">                    
-                    <table class="table table-striped">
-                        <thead>
-                            <tr class="bg-primary text-light">
-                                <th>Matricula</th>                                    
-                                <th></th>
-                                <th>Nombre</th>
-                                <th></th> 
-                                <th>Carrera</th>   
-                                <th>Cuatrimestre</th>
-                                <th>Grupo</th>
-                                <th>Curp</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                                <th>E-mail</th>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
-                                <th>Acciones</th>
-
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            <tr v-for="(dato,indice) of datos">                                
-                                <td>{{dato.vchmatricula}}</td>                                
-                                <td>{{dato.vchnombre}}</td>
-                                <td>{{dato.vchapp}}</td>
-                                <td>{{dato.vchapm}}</td>
-                                <td>{{dato.vchcarrera}}</td>
-                                <td>{{dato.chrcuatrimestre}}</td>
-                                <td>{{dato.chrgrupo}}</td>
-                                <td>{{dato.vchcurp}}</td>
-                                <td>{{dato.vchdireccion}}</td>
-                                <td>{{dato.vchtelefono}}</td>
-                                <td>{{dato.vchemail}}</td>
-                                <td>{{dato.vchusuario}}</td>
-                                <td>{{dato.vchpassword}}</td>
-                                
-                                <td>
-                                <div class="btn-group" role="group">
-                                    <button class="btn btn-secondary" title="Editar" @click="btnEditar(dato.vchmatricula,dato.vchnombre,dato.vchapp,dato.vchapm,dato.chrcuatrimestre,dato.chrgrupo,dato.vchcurp,dato.vchdireccion,dato.vchtelefono,dato.vchemail,dato.vchusuario,dato.vchpassword,dato.vchcarrera)"><i class="fas fa-pencil-alt"></i></button>    
-                                    <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.vchmatricula)"><i class="fas fa-trash-alt"></i></button>      
-                                </div>
-                                </td>
-                            </tr>   
-                        </tbody>
-                    </table>                    
-                </div>
-            </div>  
-
-                    </div>
-                </div>
+            <h3>UTHH TRANSFER</h3>
 
         </div>
 
 
 
-                <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="popper/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>         
-    <!--Vue.JS -->    
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>              
-    <!--Axios -->      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>    
-    <!--Sweet Alert 2 -->        
-    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
-    <!--Código custom -->          
-    <script src="js/main.js"></script> 
-
-  
+        <ul class="list-unstyled components">
 
 
 
-        <script type="text/javascript">
+            <p> <i class="fas fa-user"></i> Ricardo Alarcón</p>
 
-            $(document).ready(function () {
 
-                $('#sidebarCollapse').on('click', function () {
 
-                    $('#sidebar').toggleClass('active');
+            <li class="nav-item">
 
-                });
+                <a class="nav-link" href="inicio.php"> <i class="fas fa-home"></i> Home</a>
 
-            });
+            </li>
 
-        </script>
 
-    </body>
+
+            <li>
+
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Administrar</a>
+
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+
+                    <li class="active">
+
+                        <a href="alumnos.php"> <i class="fas fa-user-graduate"></i> </i> Alumnos</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Empleados</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
+
+                    </li>
+                    <li>
+
+                        <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
+
+                    </li>
+                    <li>
+
+                        <a href="conceptospendientes.php"> <i class="fas fa-address-book"></i> Conceptos Pendientes</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+
+
+
+        </ul>
+
+
+
+        <ul class="list-unstyled CTAs">
+
+            <li>
+
+                <a href="#">Contactanos</a>
+
+            </li>
+
+            <li>
+
+                <a href="about.html">Acerca de nosotros</a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- Contenido de la pagina  -->
+
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+            <div class="container-fluid">
+
+
+
+                <button type="button" id="sidebarCollapse" class="btn btn-menu">
+
+                    <i class="fas fa-align-left"></i>
+
+                    <span>Menú</span>
+
+                </button>
+
+                <div class="col titulo_pagina">
+
+                    Alumnos
+
+                </div>
+
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <i class="fas fa-align-justify"></i>
+
+                </button>
+
+
+
+
+
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="nav navbar-nav ml-auto">
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#"> <i class="fas fa-user"></i> Perfil</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#"> <i class="fas fa-times-circle"></i> Cerrar sesión</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#"> <i class="fas fa-cogs"></i> Configuración</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <div id="Idalumnos">               
+            <div class="container">                
+                <div class="row">       
+                    <div class="col">  
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+
+                            Nuevo
+                        </button>  
+                         
+                        <!--<button @click="btnAlta" class="btn btn-success" title="Nuevo"><i class="fas fa-plus"></i> Agregar Alumno</i></button>-->
+                    </div>
+
+
+                </div> 
+
+                <div class="row mt-5">
+                    <div class="col-lg-12">  
+                    <!-- Modal Editar -->
+                    <div class="container" aria-hidden="true" tabindex="-1" role="dialog" v-if="editar">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Editar Alumno</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <label class="col-sm-3 col-form-label">Matricula</label><div class="col-sm-7"><input id="edmatricula" type="text" v-model="elegido.vchmatricula" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="ednombre" type="text" v-model="elegido.vchnombre" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="edapaterno" type="text" v-model="elegido.vchapp" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="edamaterno" type="text" v-model="elegido.vchapm" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Carrera</label>
+                            <div class="col-sm-7">
+                                <select v-model="selected" id="edcarrera">
+                                    <option v-for="carreraed in carrerasedit" v-bind:value="carreraed.intidcarrera">
+                                        {{ carreraed.vchcarrera }}
+                                    </option>
+
+                                </select>
+
+                            </div>
+                            <label class="col-sm-3 col-form-label">Cuatrimestre</label><div class="col-sm-7"><input id="edcuatrimestre" type="text" v-model="elegido.chrcuatrimestre" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Grupo</label><div class="col-sm-7"><input id="edgrupo" type="text" v-model="elegido.chrgrupo" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Curp</label><div class="col-sm-7"><input id="edcurp" type="text" v-model="elegido.vchcurp" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Dirección</label><div class="col-sm-7"><input id="eddireccion" type="text" v-model="elegido.vchdireccion" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Telefono</label><div class="col-sm-7"><input id="edtelefono" type="text" v-model="elegido.vchtelefono" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">E-Mail</label><div class="col-sm-7"><input id="edemail" type="text" v-model="elegido.vchemail" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="edusuario" type="text" v-model="elegido.vchusuario" class="form-control"></div>
+                            <label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="edpassword" type="text" v-model="elegido.vchpassword" class="form-control"></div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="editar=false;btnEditar()">Editar</button>
+                            <button type="button" class="btn btn-secondary"  data-dismiss="modal" @click="editar=false">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>                  
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="bg-primary text-light">
+                                    <th>Matricula</th>                                    
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th></th> 
+                                    <th>Carrera</th>   
+                                    <th>Cuatrimestre</th>
+                                    <th>Grupo</th>
+                                    <th>Curp</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>E-mail</th>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                    <th>Acciones</th>
+
+                                </tr>    
+                            </thead>
+                            <tbody>
+                                <tr v-for="(dato,indice) of datos">                                
+                                    <td>{{dato.vchmatricula}}</td>                                
+                                    <td>{{dato.vchnombre}}</td>
+                                    <td>{{dato.vchapp}}</td>
+                                    <td>{{dato.vchapm}}</td>
+                                    <td>{{dato.vchcarrera}}</td>
+                                    <td>{{dato.chrcuatrimestre}}</td>
+                                    <td>{{dato.chrgrupo}}</td>
+                                    <td>{{dato.vchcurp}}</td>
+                                    <td>{{dato.vchdireccion}}</td>
+                                    <td>{{dato.vchtelefono}}</td>
+                                    <td>{{dato.vchemail}}</td>
+                                    <td>{{dato.vchusuario}}</td>
+                                    <td>{{dato.vchpassword}}</td>
+
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-secondary"  @click="editar=true;elegirAlumno(dato)"><i class="fas fa-pencil-alt"></i></button> 
+                                             
+                                            <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.vchmatricula,dato.vchnombre,dato.vchusuario)"><i class="fas fa-trash-alt"></i></button>  
+
+
+
+                                            </div>
+                                    </td>
+                                </tr>   
+                            </tbody>
+                        </table>
+
+                        
+
+                    </div>
+                </div>  
+
+            </div>
+
+            <!-- Modal Alta -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Alumno</h5>
+
+                </div>
+                <div class="modal-body">
+                    <label class="col-sm-3 col-form-label">Matricula</label><div class="col-sm-7"><input id="matricula" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="nombre" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="apaterno" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="amaterno" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Carrera</label>
+                        <div class="col-sm-7">
+                            <select v-model="selected" id="carrera">
+                                <option v-for="carrera in carreras" v-bind:value="carrera.intidcarrera">
+                                    {{ carrera.vchcarrera }}
+                                </option>
+
+                            </select>
+                            
+                        </div>
+                    <label class="col-sm-3 col-form-label">Cuatrimestre</label><div class="col-sm-7"><input id="cuatrimestre" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Grupo</label><div class="col-sm-7"><input id="grupo" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Curp</label><div class="col-sm-7"><input id="curp" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Dirección</label><div class="col-sm-7"><input id="direccion" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Telefono</label><div class="col-sm-7"><input id="telefono" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">E-Mail</label><div class="col-sm-7"><input id="email" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="usuario" type="text" class="form-control"></div>
+                    <label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" type="text" class="form-control"></div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" @click="btnAlta">Aceptar</button>
+                    <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- jQuery, Popper.js, Bootstrap JS -->
+<script src="jquery/jquery-3.3.1.min.js"></script>
+<script src="popper/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>         
+<!--Vue.JS -->    
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>              
+<!--Axios -->      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>    
+<!--Sweet Alert 2 -->        
+<script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
+<!--Código custom -->          
+<script src="js/main.js"></script> 
+
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+
+            $('#sidebar').toggleClass('active');
+
+        });
+
+    });
+
+</script>
+
+</body>
 
 </html>

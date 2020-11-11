@@ -73,20 +73,38 @@ methods:{
         '<div class="row"><label class="col-sm-3 col-form-label">Deposito</label><div class="col-sm-7"><input id="deposito"  type="number" class="form-control"></div></div>',
         focusConfirm: false,
         showCancelButton: true,                         
-        }).then((result) => {
-          if (result.value) {                                             
-            cuenta = document.getElementById('cuenta').value, 
-            saldo = document.getElementById('saldoactual').value, 
-            deposito = document.getElementById('deposito').value,
+      }).then((result) => {
+        if (result.value) { 
+
+           cuenta = document.getElementById('cuenta').value, 
+             saldo = document.getElementById('saldoactual').value, 
+             deposito = document.getElementById('deposito').value,
+
+          Swal.fire({
+            title: '¿Depositar a cuenta: '+cuenta+" ?",         
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor:'#1cc88a',
+            cancelButtonColor:'#d33',
+            confirmButtonText: 'Continuar'
+          }).then((result) => {
+            if (result.value) {            
+
             
-            this.depositarCuenta(cuenta,saldo,deposito);
-            Swal.fire(
+
+             this.depositarCuenta(cuenta,saldo,deposito);
+             Swal.fire(
               '¡Depositado!',
               'El deposito ha sido realizado.',
               'success'
-            )                  
-          }
-        });
+              ) 
+           }
+         }) 
+
+
+
+        }
+      });
         
     },        
     btnBorrar:function(clave){        
@@ -110,7 +128,9 @@ methods:{
         })                
     },       
     
-    //PROCEDIMIENTOS para el CRUD     
+    //PROCEDIMIENTOS para el CRUD    
+
+
     listarCuentas:function(){
         axios.post(url, {opcion:4}).then(response =>{
            this.datos = response.data;       
@@ -145,7 +165,12 @@ methods:{
     }             
 },      
 created: function(){            
-   this.listarCuentas();            
+   this.listarCuentas(); 
+   Swal.fire(
+              '¡Aviso!',
+              'Cobobox aun no implementados, usar matricula de alumno para dar de alta',
+              'success'
+            )           
 },    
 computed:{
     
