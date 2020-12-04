@@ -32,10 +32,7 @@ methods:{
           }
         })        
         if(this.carrera == ""){
-                Swal.fire({
-                  type: 'info',
-                  title: 'Datos incompletos',                                    
-                }) 
+                
         }       
         else{          
           this.altaCarrera();          

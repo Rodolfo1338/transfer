@@ -1,14 +1,13 @@
+var url = "bd/crud.materias.php";
 
-var url = "bd/crud.conceptos.php";
 
-
-var Idempleados = new Vue({    
-el: "#Idconceptos",   
+var Idcarreras = new Vue({    
+el: "#Idcarreras",   
 data:{     
      datos:[],          
      clave:"",
-     concepto:"",
-     costo:0,
+     materia:"",
+    
      
      
            
@@ -17,10 +16,9 @@ methods:{
     //BOTONES        
     btnAlta:async function(){                    
         const {value: formValues} = await Swal.fire({
-        title: 'Agregar Concepto',
+        title: 'Agregar Materia',
         html:
-        '<div class="row"><label class="col-sm-3 col-form-label">Concepto</label><div class="col-sm-7"><input id="concepto" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Costo</label><div class="col-sm-7"><input id="costo" type="number" class="form-control"></div></div>',
+        '<div class="row"><label class="col-sm-3 col-form-label">Materia</label><div class="col-sm-7"><input id="materia" type="text" class="form-control"></div></div>',
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: 'Guardar',          
@@ -28,17 +26,15 @@ methods:{
         cancelButtonColor:'#3085d6',  
         preConfirm: () => {            
             return [
-             this.concepto = document.getElementById('concepto').value,
-             this.costo = document.getElementById('costo').value      
+             this.materia = document.getElementById('materia').value     
             ]
           }
         })        
-        if(this.concepto == "" 
-          || this.costo==0){
+        if(this.materia == ""){
                 
         }       
         else{          
-          this.altaConcepto();          
+          this.altaMateria();          
           const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -47,41 +43,40 @@ methods:{
             });
             Toast.fire({
               type: 'success',
-              title: '¡Concepto Agregado!'
+              title: '¡Carrera Agregada!'
             }) 
-            this.listarEmpleados();               
+            this.listarMaterias();               
         }
     },           
-    btnEditar:async function(clave,concepto,costo){                            
+    btnEditar:async function(clave,materia){                            
         await Swal.fire({
-        title: 'Editar Concepto',
+        title: 'Editar Carrera',
         html:
         '<div class="row"><label class="col-sm-3 col-form-label">Clave</label><div class="col-sm-7"><input id="clave" value="'+clave+'" type="text" disabled class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Concepto</label><div class="col-sm-7"><input id="concepto" value="'+concepto+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Costo</label><div class="col-sm-7"><input id="costo" value="'+costo+'" type="number" class="form-control"></div></div>',
+        '<div class="row"><label class="col-sm-3 col-form-label">Carrera</label><div class="col-sm-7"><input id="materia" value="'+materia+'" type="text" class="form-control"></div></div>',
         focusConfirm: false,
         showCancelButton: true,                         
         }).then((result) => {
           if (result.value) {                                             
             clave = document.getElementById('clave').value,    
-            concepto = document.getElementById('concepto').value,
-            costo = document.getElementById('costo').value,
+            materia = document.getElementById('materia').value,
+           
             
                                              
             
-            this.editarConcepto(clave,concepto,costo);
+            this.editarMateria(clave,materia);
             Swal.fire(
               '¡Actualizado!',
-              'El concepto ha sido actualizado.',
+              'La materia ha sido actualizada',
               'success'
             )                  
           }
         });
         
     },        
-    btnBorrar:function(clave,nombre){        
+    btnBorrar:function(clave,materia){        
         Swal.fire({
-          title: '¿Está seguro de borrar el concepto: '+nombre+" ?",         
+          title: '¿Está seguro de borrar : '+materia+" ?",         
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor:'#d33',
@@ -89,11 +84,11 @@ methods:{
           confirmButtonText: 'Borrar'
         }).then((result) => {
           if (result.value) {            
-            this.borrarConcepto(clave);             
+            this.borrarMateria(clave);             
             //y mostramos un msj sobre la eliminación  
             Swal.fire(
               '¡Eliminado!',
-              'El concepto ha sido borrado.',
+              'La Materia ha sido borrada.',
               'success'
             )
           }
@@ -101,40 +96,39 @@ methods:{
     },       
     
     //PROCEDIMIENTOS para el CRUD     
-    listarConceptos:function(){
+    listarMaterias:function(){
         axios.post(url, {opcion:4}).then(response =>{
            this.datos = response.data;       
         });
     },    
     //Procedimiento CREAR.
-    altaConcepto:function(){
-        axios.post(url, {opcion:1, concepto:this.concepto,costo:this.costo
-        }).then(response =>{
-            this.listarConceptos();
+    altaMateria:function(){
+        axios.post(url, {opcion:1, materia:this.materia
+                }).then(response =>{
+            this.listarMaterias();
         });        
-         this.concepto="", this.costo=0
+         this.materia=""
     },               
     //Procedimiento EDITAR.
-    editarConcepto:function(clave,concepto,costo){       
+    editarMateria:function(clave,materia){       
        axios.post(url, {
         opcion:2, 
         clave:clave,
-        concepto:concepto,
-        costo:costo
+        materia:materia
       })
        .then(response =>{           
-           this.listarConceptos();           
+           this.listarMaterias();           
         });                              
     },    
     //Procedimiento BORRAR.
-    borrarConcepto:function(clave){
+    borrarMateria:function(clave){
         axios.post(url, {opcion:3, clave:clave}).then(response =>{           
-            this.listarConceptos();
+            this.listarMaterias();
             });
     }             
 },      
 created: function(){            
-   this.listarConceptos();            
+   this.listarMaterias();            
 },    
 computed:{
     

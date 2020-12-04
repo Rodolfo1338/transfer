@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $variable_rol = $_SESSION['rol'];
+    $id_user=$_SESSION['idusuario'];
+
+    if($varsesion == null || $varsesion = ''){
+        header('location:index.php');
+        die();
+    }
+?>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -70,46 +82,18 @@
 
 
 
-                    <li>
+                     <li>
+                       <a href="#SubmenuCajeros" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Cajeros</a> 
+                         <ul class="collapse list-unstyled" id="SubmenuCajeros">
 
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Administrar</a>
+                             <li>
 
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-
-                            <li class="active">
-
-                                <a href="alumnos.php"> <i class="fas fa-user-graduate"></i> </i> Alumnos</a>
+                                <a href="cuentas.php"> <i class="fas fa-address-book"></i> Cuentas</a>
 
                             </li>
+                             
 
-                            <li>
-
-                                <a href="empleados.php"> <i class="fas fa-user-tie"> </i> Empleados</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="cuentas.html"> <i class="fas fa-address-book"></i> Cuentas</a>
-
-                            </li>
-                            <li>
-
-                                <a href="conceptos.php"> <i class="fas fa-address-book"></i> Conceptos</a>
-
-                            </li>
-                            <li>
-
-                                <a href="carreras.php"> <i class="fas fa-address-book"></i> Carreras</a>
-
-                            </li>
-                            <li>
-
-                                <a href="conceptospendientes.php"> <i class="fas fa-address-book"></i> Conceptos Pendientes</a>
-
-                            </li>
-
-                        </ul>
+                         </ul>
 
                     </li>
 
@@ -193,7 +177,7 @@
 
                                 <li class="nav-item">
 
-                                    <a class="nav-link" href="#"> <i class="fas fa-times-circle"></i> Cerrar sesión</a>
+                                    <a class="nav-link" href="cerrar_sesion.php"> <i class="fas fa-times-circle"></i> Cerrar sesión</a>
 
                                 </li>
 
@@ -305,6 +289,19 @@
             });
 
         </script>
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/5fc69bb5920fc91564cc80d4/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
 
     </body>
 

@@ -5,7 +5,9 @@ var url = "bd/crud.empleados.php";
 var Idempleados = new Vue({    
 el: "#Idempleados",   
 data:{     
-     datos:[],          
+     datos:[], 
+     roles:[],
+     rolesedit:[],         
      clave:"",
      nombre:"",
      apaterno:"",
@@ -15,105 +17,65 @@ data:{
      puesto:"",
      usuario:"",
      password:"",
+     editar:false,
+     elegido:{} ,
+     selected: 0,   
      
            
  },    
 methods:{  
-    //BOTONES        
-    btnAlta:async function(){                    
-        const {value: formValues} = await Swal.fire({
-        title: 'Agregar Empleado',
-        html:
-        '<div class="row"><label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="nombre" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="apaterno" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="amaterno" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">RFC</label><div class="col-sm-7"><input id="rfc" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Direccion</label><div class="col-sm-7"><input id="direccion" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Puesto</label><div class="col-sm-7"><input id="puesto" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="usuario" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" type="text" class="form-control"></div></div>',
-        focusConfirm: false,
-        showCancelButton: true,
-        confirmButtonText: 'Guardar',          
-        confirmButtonColor:'#1cc88a',          
-        cancelButtonColor:'#3085d6',  
-        preConfirm: () => {            
-            return [
-             this.nombre = document.getElementById('nombre').value,
-             this.apaterno = document.getElementById('apaterno').value,
-             this.amaterno = document.getElementById('amaterno').value, 
-             this.rfc = document.getElementById('rfc').value, 
-             this.direccion = document.getElementById('direccion').value,
-             this.puesto = document.getElementById('puesto').value,  
-             this.usuario = document.getElementById('usuario').value,  
-             this.password = document.getElementById('password').value       
-            ]
-          }
-        })        
-        if(this.nombre == "" 
-          || this.apaterno==""
-          || this.amaterno=="" 
-          || this.rfc=="" 
-          || this.direccion=="" 
-          || this.puesto==""
-          || this.usuario=="" 
-          || this.password==""){
-                Swal.fire({
-                  type: 'info',
-                  title: 'Datos incompletos',                                    
-                }) 
-        }       
-        else{          
-          this.altaEmpleado();          
-          const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
-            });
-            Toast.fire({
-              type: 'success',
-              title: '¡Empleado Agregado!'
-            }) 
-            this.listarEmpleados();               
-        }
-    },           
-    btnEditar:async function(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password){                            
-        await Swal.fire({
-        title: 'Editar Empleado',
-        html:
-        '<div class="row"><label class="col-sm-3 col-form-label">Clave</label><div class="col-sm-7"><input id="clave" value="'+clave+'" type="text" disabled class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Nombre</label><div class="col-sm-7"><input id="nombre" value="'+nombre+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">A Paterno</label><div class="col-sm-7"><input id="apaterno" value="'+apaterno+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">A Materno</label><div class="col-sm-7"><input id="amaterno" value="'+amaterno+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">RFC</label><div class="col-sm-7"><input id="rfc" value="'+rfc+'" type="text"  class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Direccion</label><div class="col-sm-7"><input id="direccion" value="'+direccion+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Puesto</label><div class="col-sm-7"><input id="puesto" value="'+puesto+'" type="text" class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Usuario</label><div class="col-sm-7"><input id="usuario" value="'+usuario+'" type="text" disabled class="form-control"></div></div>'+
-        '<div class="row"><label class="col-sm-3 col-form-label">Contraseña</label><div class="col-sm-7"><input id="password" value="'+password+'" type="text" class="form-control"></div></div>',
-        focusConfirm: false,
-        showCancelButton: true,                         
-        }).then((result) => {
-          if (result.value) {                                             
-            clave = document.getElementById('clave').value,    
-            nombre = document.getElementById('nombre').value,
-            apaterno = document.getElementById('apaterno').value,
-            amaterno = document.getElementById('amaterno').value,
-            rfc = document.getElementById('rfc').value, 
-            direccion = document.getElementById('direccion').value, 
-            puesto = document.getElementById('puesto').value,
-            usuario = document.getElementById('usuario').value, 
-            password = document.getElementById('password').value, 
-                                             
+
+    NuevoEmpleado:function(){
+
+      nombre = document.getElementById('nombre').value,
+      apaterno = document.getElementById('apaterno').value,
+      amaterno = document.getElementById('amaterno').value,
+      rfc = document.getElementById('rfc').value,
+      direccion = document.getElementById('direccion').value,
+      puesto = document.getElementById('puesto').value,
+      usuario = document.getElementById('usuario').value,
+      password = document.getElementById('password').value,
+      
+      this.altaEmpleado(nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password);
+
+      document.getElementById('nombre').value="";
+      document.getElementById('apaterno').value="";
+      document.getElementById('amaterno').value="";
+      document.getElementById('rfc').value="";
+      document.getElementById('direccion').value="";
+      document.getElementById('puesto').value="";
+      document.getElementById('usuario').value="";
+      document.getElementById('password').value="";
+
+
+
+
+    },
+          
             
-            this.editarEmpleado(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password);
-            Swal.fire(
-              '¡Actualizado!',
-              'El empleado ha sido actualizado.',
-              'success'
-            )                  
-          }
-        });
+    btnEditar:function(){ 
+      clave=document.getElementById('edclave').value,
+      nombre = document.getElementById('ednombre').value,
+      apaterno = document.getElementById('edapaterno').value,
+      amaterno = document.getElementById('edamaterno').value,
+      rfc = document.getElementById('edrfc').value,
+      direccion = document.getElementById('eddireccion').value,
+      puesto = document.getElementById('edpuesto').value,
+      usuario = document.getElementById('edusuario').value,
+      password = document.getElementById('edpassword').value,
+
+      this.editarEmpleado(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password);
+      document.getElementById('edclave').value="";
+      document.getElementById('ednombre').value="";
+      document.getElementById('edapaterno').value="";
+      document.getElementById('edamaterno').value="";
+      document.getElementById('edrfc').value="";
+      document.getElementById('eddireccion').value="";
+      document.getElementById('edpuesto').value="";
+      document.getElementById('edusuario').value="";
+      document.getElementById('edpassword').value="";
+
+        
         
     },        
     btnBorrar:function(clave,nombre){        
@@ -144,14 +106,18 @@ methods:{
         });
     },    
     //Procedimiento CREAR.
-    altaEmpleado:function(){
-        axios.post(url, {opcion:1, nombre:this.nombre,apaterno:this.apaterno,amaterno:this.amaterno,
-          rfc:this.rfc,direccion:this.direccion,puesto:this.puesto,usuario:this.usuario,password:this.password
+    altaEmpleado:function(nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password){
+        axios.post(url, {opcion:1, nombre:nombre,apaterno:apaterno,amaterno:amaterno,
+          rfc:rfc,direccion:direccion,puesto:puesto,usuario:usuario,password:password
         }).then(response =>{
             this.listarEmpleados();
+            Swal.fire(
+              '¡Registrado!',
+              'El empleado ha sido registrado.',
+              'success'
+            )
         });        
-         this.nombre="", this.apaterno="", this.amaterno="",this.rfc="", this.direccion="",this.puesto="",this.usuario="",
-         this.password=""
+         
     },               
     //Procedimiento EDITAR.
     editarEmpleado:function(clave,nombre,apaterno,amaterno,rfc,direccion,puesto,usuario,password){       
@@ -168,7 +134,8 @@ methods:{
         password:password
       })
        .then(response =>{           
-           this.listarEmpleados();           
+           this.listarEmpleados();  
+                      
         });                              
     },    
     //Procedimiento BORRAR.
@@ -176,10 +143,27 @@ methods:{
         axios.post(url, {opcion:3, clave:clave}).then(response =>{           
             this.listarEmpleados();
             });
-    }             
+    },
+    elegirEmpleado:function(elegido){
+      this.elegido=elegido;
+      this.listarrolesedit(elegido.vchrol);
+    },
+    listarrolesedit:function(puesto){
+      axios.post(url, {opcion:6,puesto:puesto}).then(response =>{
+           this.rolesedit = response.data;  
+           console.log(this.rolesedit);     
+        });
+
+    },
+    consultarroles:function(){
+      axios.post(url, {opcion:5}).then(response =>{
+           this.roles = response.data;       
+        });
+    }            
 },      
 created: function(){            
-   this.listarEmpleados();            
+   this.listarEmpleados(); 
+   this.consultarroles();           
 },    
 computed:{
     

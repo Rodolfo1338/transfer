@@ -15,7 +15,7 @@ $materia = (isset($_POST['materia'])) ? $_POST['materia'] : '';
 
 switch($opcion){
     case 1:
-        $consulta1="INSERT INTO tblconceptospendientes(bolestadoconcepto,intidconcepto,vchmatricula,intidmateria) VALUES ('$estado','$concepto','$matricula','$materia')";	
+        $consulta1="INSERT INTO tblconceptospendientes(bolestadoconcepto,intidconcepto,vchmatricula,intidmateria) VALUES ('activo','$concepto','$matricula','$materia')";	
         $resultado1 = $conexion->prepare($consulta1);
         $resultado1->execute();
                      
@@ -29,12 +29,24 @@ switch($opcion){
         $data=$resultado1->fetchAll(PDO::FETCH_ASSOC);
         break;        
     case 3:
-        $consulta = "DELETE FROM tblconceptos WHERE intidconcepto='$clave' ";		
+        $consulta = "DELETE FROM tblconceptospendientes WHERE intidconceptopendiente='$clave' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();                           
         break;         
     case 4:
         $consulta = "SELECT a.`intidconceptopendiente`,a.`vchmatricula`,b.`vchconcepto`,d.`vchmateria`, b.`intcosto`,c.`vchnombre`,c.`vchapp`,c.`vchapm`,e.`vchcarrera`,a.`bolestadoconcepto` FROM tblconceptospendientes a LEFT JOIN tblconceptos b ON a.`intidconcepto`=b.`intidconcepto` LEFT JOIN tblalumnos c ON a.`vchmatricula`=c.`vchmatricula` LEFT JOIN tblcarreras e ON c.`intidcarrera`=e.`intidcarrera` LEFT JOIN tblmaterias d ON a.`intidmateria`=d.`intidmateria`";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $consulta = "SELECT * FROM tblconceptos";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 6:
+        $consulta = "SELECT * FROM tblmaterias";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

@@ -10,19 +10,7 @@ data:{
      editar:false,
      elegido:{} ,
      selected: 0,       
-     /*matricula:"",
-     nombre:"",
-     apaterno:"",
-     amaterno:"",
-     carrera:"",
-     cuatrimestre:"",
-     grupo:"",
-     curp:"",
-     direccion:"",
-     telefono:"",
-     email:"",
-     usuario:"",
-     password:"",*/
+     
            
  },    
 methods:{  
@@ -114,7 +102,7 @@ methods:{
      document.getElementById('edemail').value="",
      document.getElementById('edusuario').value="",
      document.getElementById('edpassword').value="",
-     location.reload(true);
+     
 
    
 

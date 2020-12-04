@@ -34,11 +34,22 @@ switch($opcion){
         $resultado->execute();                           
         break;         
     case 4:
-        $consulta = "SELECT a.`vchidcuenta`,b.`vchnombre`,b.`vchapp`,b.`vchapm`,c.`vchcarrera`,a.`vchfechavencimiento`,a.`vchcodigoseguridad`,a.`fltsaldo` FROM tblcuentas a LEFT JOIN tblalumnos b ON a.`vchidcuenta`=b.`vchmatricula` LEFT JOIN tblcarreras c ON b.`intidcarrera`=c.`intidcarrera`
-";
+        $consulta = "SELECT a.`vchidcuenta`,b.`vchnombre`,b.`vchapp`,b.`vchapm`,c.`vchcarrera`,a.`vchfechavencimiento`,a.`vchcodigoseguridad`,a.`fltsaldo` FROM tblcuentas a LEFT JOIN tblalumnos b ON a.`vchidcuenta`=b.`vchmatricula` LEFT JOIN tblcarreras c ON b.`intidcarrera`=c.`intidcarrera`";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $consulta1="INSERT INTO tblmovimientos(vchcuenta,intidtiposervicio,`intimporte`,vchfecha) VALUES ('$cuenta',1,$saldo,(SELECT NOW()));";
+        $resultado1 = $conexion->prepare($consulta1);
+        $resultado1->execute();
+                    
+        break;
+    case 6:
+        $consulta1="INSERT INTO tblmovimientos(vchcuenta,intidtiposervicio,`intimporte`,vchfecha) VALUES ('$cuenta',2,$deposito,(SELECT NOW()));";
+        $resultado1 = $conexion->prepare($consulta1);
+        $resultado1->execute();
+                    
         break;
 }
 

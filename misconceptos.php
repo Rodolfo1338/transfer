@@ -10,6 +10,7 @@
         die();
     }
 ?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -26,7 +27,7 @@
 
 
 
-    <title>Conceptos Pendientes</title>
+    <title> Mis Conceptos Pendientes</title>
 
 
 
@@ -51,6 +52,8 @@
 
 
 <body>
+
+    <div id="classgeneral">
     
 
  <div class="wrapper">
@@ -69,9 +72,13 @@
 
         <ul class="list-unstyled components">
 
+            <p><input type="text" id="rolsesion" style="display:none"  value="<?php echo $variable_rol  ?>"></p>
+            <p><input type="text" style="display:none" id="iduser"  value="<?php echo $id_user  ?>"></p>
+            <p> <i class="fas fa-user"></i> <?php echo $_SESSION['usuario']?></p>
 
 
-            <p> <i class="fas fa-user"></i> Ricardo Alarcón</p>
+
+            
 
 
 
@@ -86,12 +93,17 @@
             <div id="menus">
                 
                 <li>
-                       <a href="#SubmenuDocentes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Docentes</a> 
-                         <ul class="collapse list-unstyled" id="SubmenuDocentes">
+                       <a href="#SubmenuAlumnos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fas fa-users-cog"></i> Alumnos</a> 
+                         <ul class="collapse list-unstyled" id="SubmenuAlumnos">
 
-                             <li>
+                             <li class="active">
 
-                                <a href="conceptospendientes.php"> <i class="fas fa-address-book"></i> Conceptos Pendientes</a>
+                                <a href="micuenta.php"> <i class="fas fa-user-graduate"></i> </i> Mi Cuenta</a>
+
+                            </li>
+                            <li class="active">
+
+                                <a href="misconceptos.php"> <i class="fas fa-user-graduate"></i> </i> Mis Pendientes</a>
 
                             </li>
                              
@@ -150,7 +162,7 @@
 
                 <div class="col titulo_pagina">
 
-                    Conceptos Pendientes
+                    <h3>Mis Pendientes</h3>
 
                 </div>
 
@@ -193,16 +205,19 @@
         </nav>
 
         <div id="Idconceptospendientes">               
-            <div class="container">                
-                <div class="row">       
-                    <div class="col">        
-                        
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                            Asignar Nuevo Concepto
-                        </button>  
-                    </div>
+            <div class="container"> 
 
-                </div> 
+                <p v-for="(Adeud,indice) of Adeudo"> <i class="fas fa-user"  ></i> Adeudo Total: {{Adeud.adeudototal}}</p>
+
+               
+                <p></p>
+                    <p class="heading" v-for="(datocuenta,indice) of datoscuenta"><i class="fa fa-credit-card"></i> Saldo disponible: $
+                    <strong >{{datocuenta.fltsaldo}}</strong>
+                    </p>
+                
+               <div align="center">
+                   <p>Conceptos Pendientes</p>
+               </div>
 
                 <div class="row mt-5">
                     <div class="col-lg-12">                    
@@ -214,10 +229,8 @@
                                     <th>Concepto</th>
                                     <th>Materia</th>
                                     <th>Costo</th>
-                                    <th></th>
-                                    <th>Nombre</th>
-                                    <th></th>
-                                    <th>Carrera</th>
+                                    
+                                    
                                     <th>Estatus</th>
                                     <th>Acciones</th>
 
@@ -230,10 +243,8 @@
                                     <td>{{dato.vchconcepto}}</td>
                                     <td>{{dato.vchmateria}}</td>
                                     <td>{{dato.intcosto}}</td>
-                                    <td>{{dato.vchnombre}}</td>
-                                    <td>{{dato.vchapp}}</td>
-                                    <td>{{dato.vchapm}}</td>
-                                    <td>{{dato.vchcarrera}}</td>
+                                    
+                                    
                                     <td>{{dato.bolestadoconcepto}}</td>
 
 
@@ -241,64 +252,77 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             
-                                            <button class="btn btn-danger" title="Eliminar" @click="btnBorrar(dato.intidconceptopendiente,dato.vchconcepto,dato.vchmateria,dato.vchmatricula)" ><i class="fas fa-trash-alt"></i></button>      
+                                            <button class="btn btn-success" title="Pagar" @click="btnPagar(dato.intidconceptopendiente,dato.intcosto,dato.vchmatricula)" ><i class="fa fa-check-circle" aria-hidden="true"></i> Pagar</button>      
                                         </div>
                                     </td>
                                 </tr>   
                             </tbody>
                         </table>                    
                     </div>
-                </div>  
+                </div> 
+
+                <!-- hasta aqui --> 
+
+                  <div align="center">
+                   <p>Conceptos Pagados</p>
+               </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-12">                    
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="bg-primary text-light">
+                                    <th>Clave</th>                                    
+                                    <th>Cuenta</th>
+                                    <th>Concepto</th>
+                                    <th>Materia</th>
+                                    <th>Costo</th>
+                                    
+                                    
+                                    <th>Estatus</th>
+                                    
+
+                                </tr>    
+                            </thead>
+                            <tbody>
+                                <tr v-for="(dato,indice) of datospagados">                                
+                                    <td>{{dato.intidconceptopendiente}}</td>                                
+                                    <td>{{dato.vchmatricula}}</td>
+                                    <td>{{dato.vchconcepto}}</td>
+                                    <td>{{dato.vchmateria}}</td>
+                                    <td>{{dato.intcosto}}</td>
+                                    
+                                    
+                                    <td>{{dato.bolestadoconcepto}}</td>
+
+
+
+                                                                    </tr>   
+                            </tbody>
+                        </table>                    
+                    </div>
+                </div> 
 
             </div>
-            <!-- Modal Alta -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Alumno</h5>
-
-                </div>
-                <div class="modal-body">
-                    <label class="col-sm-3 col-form-label">Concepto</label>
-                    <div class="col-sm-7">
-                        <select v-model="selected" id="concepto">
-                            <option v-for="(concepto,indice) of conceptos" :value="concepto.intidconcepto">
-                                {{ concepto.vchconcepto }}
-                            </option>
-
-
-                        </select>
-                       
-
-                    </div>
-                    <label class="col-sm-3 col-form-label">Cuenta</label><div class="col-sm-7"><input id="cuenta" type="number" class="form-control"></div>
-                    <label class="col-sm-3 col-form-label">Materia</label>
-                     <div class="col-sm-7">
-                        <select v-model="selected" id="combomateria">
-                            <option v-for="(materia,indice) of materias" v-bind:value="materia.intidmateria">
-                                {{ materia.vchmateria }}
-                            </option>
-
-                        </select>
-
-                    </div>
-                    
-                    
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" @click="btnAlta">Aceptar</button>
-                    <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            
 
 </div>
 
 </div>
+</div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5fc69bb5920fc91564cc80d4/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
 
 
 
@@ -313,7 +337,7 @@
 <!--Sweet Alert 2 -->        
 <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>      
 <!--Código custom -->          
-<script  src="js/conceptospendientes.main.js"></script> 
+<script  src="js/misconceptos.main.js"></script> 
 
 
 
@@ -332,19 +356,6 @@
     });
 
 </script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5fc69bb5920fc91564cc80d4/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
 
 </body>
 

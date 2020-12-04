@@ -3,7 +3,6 @@
     error_reporting(0);
     $varsesion = $_SESSION['usuario'];
     $variable_rol = $_SESSION['rol'];
-    $id_user=$_SESSION['idusuario'];
 
     if($varsesion == null || $varsesion = ''){
         header('location:index.php');
@@ -44,11 +43,7 @@
                 <div id="Idinicio">
                     <ul class="list-unstyled components">
                         
-                        
-
-                        <p><input type="text" style="display:none" id="rolsesion"  value="<?php echo $variable_rol  ?>"></p>
-                        <p><input type="text" style="display:none" id="rolsesion"  value="<?php echo $id_user  ?>"></p>
-                        <p> <i class="fas fa-user"></i> <?php echo $_SESSION['usuario']?></p>
+                        <p> <i class="fas fa-user"></i> <?php echo $_SESSION['usuario']?> - <?php echo $variable_rol?></p>
 
 
                         <li class="nav-item">
@@ -141,83 +136,63 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="perfil_usuario.php"> <i class="fas fa-user"></i> Perfil</a>
+                                    <a class="nav-link active" href="perfil_usuario.php"> <i class="fas fa-user"></i> Perfil</a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="cerrar_sesion.php"> <i class="fas fa-times-circle"></i> Cerrar sesión</a>
                                 </li>
+
                             </ul>
                         </div>
                     </div>
                 </nav>
 
-                <div class="contenedor-carrusel shadow">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img class="d-block w-100" src="img\carrucel_1.jpg" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                            <img class="d-block w-100" src="img\carrucel_2.jpg" alt="Second slide">
-                          </div>
+                <div class="container-fluid">
+                    <div class="row justify-content-around">
+                        
+                        <div class="col-4">
+                            <input class="form-control form-control-sm" type="text" placeholder="Nombre">
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
+                        
+                        
+
+                        <div class="col-4">
+                            <input class="form-control form-control-sm" type="text" placeholder="Apellido Paterno">
+                        </div>
+
+                        <div class="col-4">
+                            <input class="form-control form-control-sm" type="text" placeholder="Apellido Materno">
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-
-    <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="popper/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>         
-    <!--Vue.JS -->    
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>              
-    <!--Axios -->      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>    
-    <!--Sweet Alert 2 -->        
-    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
-    <!--Código custom -->          
-    <script src="js/inicio.main.js"></script>       
-    
+        <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="jquery/jquery-3.3.1.min.js"></script>
+        <script src="popper/popper.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>         
+        <!--Vue.JS -->    
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>              
+        <!--Axios -->      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>    
+        <!--Sweet Alert 2 -->        
+        <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
+        <!--Código custom -->  
+        <script src="js/inicio.main.js"></script>        
+         
         <script type="text/javascript">
-
             $(document).ready(function () {
-
                 $('#sidebarCollapse').on('click', function () {
-
                     $('#sidebar').toggleClass('active');
-
                 });
 
             });
+
         </script>
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/5fc69bb5920fc91564cc80d4/default';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
     </body>
 </html>
